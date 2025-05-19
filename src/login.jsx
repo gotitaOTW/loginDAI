@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, Alert, Image } from 'react-native';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [contrasenia, setContrasenia] = useState('');
 
   const handleLogin = () => {
-    // Aquí podrías validar los datos o hacer un fetch
     Alert.alert('Login info', `Email: ${email}\nPassword: ${contrasenia}`);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Iniciar sesión</Text>
+      
+      <Image
+        source={require('./img/logo.png')}
+        style={styles.logo}
+      />
+
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -24,7 +29,7 @@ export default function Login() {
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
-        value={password}
+        value={contrasenia}
         onChangeText={setContrasenia}
         secureTextEntry
       />
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 20,
-    backgroundColor: '#f2f2f2'
+    backgroundColor: '#f2f2f2',
   },
   title: {
     fontSize: 24,
@@ -53,5 +58,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'white',
     borderRadius: 5
-  }
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginBottom: 30,
+  },
 });
